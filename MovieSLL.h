@@ -1,30 +1,26 @@
-#include "MovieNode.h"
 #include <iostream>
-using namespace std;
+#include "MovieNode.h"
 
-template <class T>
 class MovieSLL {
 private:
-    MovieNode<T>* head;
+    MovieNode* head;
 
 public:
     MovieSLL();
 
-    void addInOrder(T val);
-    bool deleteByTitle(string title);
+    void addInOrder(Movie val);
+    bool deleteByTitle(std::string title);
     void printList();
 
-    MovieNode<T>* getHead();
+    MovieNode* getHead();
 };
 
-template <class T>
-MovieSLL<T>::MovieSLL() {
+MovieSLL::MovieSLL() {
     head = nullptr;
 }
 
-template <class T>
-void MovieSLL<T>::addInOrder(T val) {
-    MovieNode<T>* newNode = new MovieNode<T>(val);
+void MovieSLL::addInOrder(Movie val) {
+    MovieNode* newNode = new MovieNode(val);
 
     if (head == nullptr || val < head->getInfo()) {
         newNode->setNext(head);
@@ -32,7 +28,7 @@ void MovieSLL<T>::addInOrder(T val) {
         return;
     }
 
-    MovieNode<T>* temp = head;
+    MovieNode* temp = head;
 
     while (temp->getNext() != nullptr &&
            temp->getNext()->getInfo() < val) {
@@ -43,18 +39,17 @@ void MovieSLL<T>::addInOrder(T val) {
     temp->setNext(newNode);
 }
 
-template <class T>
-bool MovieSLL<T>::deleteByTitle(string title) {
+bool MovieSLL::deleteByTitle(std::string title) {
     if (head == nullptr) return false;
 
     if (head->getInfo().getTitle() == title) {
-        MovieNode<T>* toDelete = head;
+        MovieNode* toDelete = head;
         head = head->getNext();
         delete toDelete;
         return true;
     }
 
-    MovieNode<T>* temp = head;
+    MovieNode* temp = head;
 
     while (temp->getNext() != nullptr &&
            temp->getNext()->getInfo().getTitle() != title) {
@@ -62,7 +57,7 @@ bool MovieSLL<T>::deleteByTitle(string title) {
     }
 
     if (temp->getNext() != nullptr) {
-        MovieNode<T>* toDelete = temp->getNext();
+        MovieNode* toDelete = temp->getNext();
         temp->setNext(toDelete->getNext());
         delete toDelete;
         return true;
@@ -71,18 +66,17 @@ bool MovieSLL<T>::deleteByTitle(string title) {
     return false;
 }
 
-template <class T>
-void MovieSLL<T>::printList() {
-    MovieNode<T>* temp = head;
+void MovieSLL::printList() {
+    MovieNode* temp = head;
 
     while (temp != nullptr) {
         temp->getInfo().print();
-        cout << "------------------\n";
+        std::cout << "------------------\n";
         temp = temp->getNext();
     }
 }
 
-template <class T>
-MovieNode<T>* MovieSLL<T>::getHead() {
+
+MovieNode* MovieSLL::getHead() {
     return head;
 }

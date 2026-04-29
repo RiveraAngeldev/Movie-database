@@ -1,50 +1,42 @@
-#include <iostream>
-using namespace std;
+#include "Movie.h"
 
-template <class T>
 class MovieNode {
 private:
-    T info;
-    MovieNode<T>* next;
+    Movie info;
+    MovieNode* next;
 
 public:
     MovieNode();
-    MovieNode(T val);
-    
-    T getInfo();
-    MovieNode<T>* getNext();
+    MovieNode(Movie val);
 
-    void setInfo(T val);
-    void setNext(MovieNode<T>* n);
+    Movie getInfo();
+    MovieNode* getNext();
+
+    void setInfo(Movie val);
+    void setNext(MovieNode* n);
 };
 
-template <class T>
-MovieNode<T>::MovieNode() {
+MovieNode::MovieNode() {
     next = nullptr;
 }
 
-template <class T>
-MovieNode<T>::MovieNode(T val) {
+MovieNode::MovieNode(Movie val) {
     info = val;
     next = nullptr;
 }
 
-template <class T>
-T MovieNode<T>::getInfo() {
+Movie MovieNode::getInfo() {
     return info;
 }
 
-template <class T>
-MovieNode<T>* MovieNode<T>::getNext() {
+MovieNode* MovieNode::getNext() {
     return next;
 }
 
-template <class T>
-void MovieNode<T>::setInfo(T val) {
+void MovieNode::setInfo(Movie val) {
     info = val;
 }
 
-template <class T>
-void MovieNode<T>::setNext(MovieNode<T>* n) {
+void MovieNode::setNext(MovieNode* n) {
     next = n;
 }
