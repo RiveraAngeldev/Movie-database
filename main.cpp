@@ -108,5 +108,6 @@ void displayMenu()
     cout << "5. Delete a movie\n";
     cout << "6. List all movies from a selected genre\n";
     cout << "7. Search for a movie\n";
-    cout << "8. Exit\n";    
+    cout << "8. Exit\n";  
+    cout << "Enter your choice: \n";  
 }
