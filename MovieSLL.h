@@ -12,7 +12,7 @@ public:
     bool deleteByTitle(std::string title);
     void printList();
     void printShortList();
-    Movie* findMovieByTitle(const string& title);
+    MovieNode* findMovieByTitle(const std::string& title);
 
     MovieNode* getHead();
 };
@@ -32,8 +32,7 @@ void MovieSLL::addInOrder(Movie val) {
 
     MovieNode* temp = head;
 
-    while (temp->getNext() != nullptr &&
-           temp->getNext()->getInfo() < val) {
+    while (temp->getNext() != nullptr && temp->getNext()->getInfo() < val) {
         temp = temp->getNext();
     }
 
@@ -53,8 +52,7 @@ bool MovieSLL::deleteByTitle(std::string title) {
 
     MovieNode* temp = head;
 
-    while (temp->getNext() != nullptr &&
-           temp->getNext()->getInfo().getTitle() != title) {
+    while (temp->getNext() != nullptr && temp->getNext()->getInfo().getTitle() != title) {
         temp = temp->getNext();
     }
 
@@ -81,7 +79,7 @@ void MovieSLL::printList() {
 void MovieSLL::printShortList() {
     MovieNode* temp = head;
     if(temp == nullptr) {
-        cout << "No movie in this genre.\n";
+        std::cout << "No movie in this genre.\n";
     }
     while(temp != nullptr) {
         temp->getInfo().printShort();
@@ -89,14 +87,16 @@ void MovieSLL::printShortList() {
     }
 }
 
-Movie* MovieSLL::findMovieByTitle(const string& title) {
+MovieNode* MovieSLL::findMovieByTitle(const std::string& title) {
     MovieNode* temp = head;
-    while(temp != nullptr) {
-        if(temp->getInfo().getTitle() == title) {
-            return &(temp->getInfo());
+
+    while (temp != nullptr) {
+        if (temp->getInfo().getTitle() == title) {
+            return temp;
         }
-        temp = temp->getNext();  
+        temp = temp->getNext();
     }
+
     return nullptr;
 }
 

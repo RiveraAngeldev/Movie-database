@@ -12,9 +12,11 @@ private:
 public:
     Movie();
     Movie(string t, string d, string s, int y);
-
     string getTitle() const;
-
+    void setTitle( string t);
+    void setDirector( string d);
+    void setSynopsis( string s);
+    void setYear(int y);
     void print() const;
     void printShort() const;
 
@@ -37,6 +39,22 @@ Movie::Movie(string t, string d, string s, int y) {
 
 string Movie::getTitle() const {
     return title;
+}
+
+void Movie::setTitle(string t)  {
+    title = t;
+}
+
+void Movie::setDirector(string d) {
+    director = d;
+}
+
+void Movie::setSynopsis(string s) {
+    synopsis = s;
+} 
+
+void Movie::setYear(int y) {
+    year = y;
 }
 
 void Movie::print() const {

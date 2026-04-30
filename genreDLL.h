@@ -14,6 +14,7 @@ public:
     void printGenres();
     void listMoviesByGenre(const string& name);
     void searchMovie(const string& title);
+    void modifyMovie(string title);
     GenreNode* findGenre(string name);
 };
 
@@ -88,15 +89,55 @@ void GenreDLL::listMoviesByGenre(const string& name) {
 void GenreDLL::searchMovie(const string& title) {
     GenreNode* temp = head;
     while(temp != nullptr) {
-        Movie* movie = temp->movies.findMovieByTitle(title);
-        if(movie != nullptr) {
-            cout << "Movie find in genre " << temp-> name << "\n";
-            movie->print();
-            return;
+        MovieNode* node = temp->movies.findMovieByTitle(title);
+        if (node != nullptr) {
+            cout << "Movie found in genre " << temp->name << "\n";
+            node->getInfo().print();
         }
         temp = temp->next;
     }
     cout << "Movie not found.\n";
+}
+
+void GenreDLL::modifyMovie(string title) {
+    GenreNode* temp = head;
+    while(temp != nullptr) {
+        MovieNode* node = temp->movies.findMovieByTitle(title);
+        if(node != nullptr) {
+            cout << "Movie found in genre " << temp->name << "\n";
+            node->getInfo().print();
+        
+            string confirm;
+            cout <<"\nDo you want to modify this Movie? Y/N: ";
+            getline(cin, confirm);
+            
+            if(confirm != "Y" && confirm != "y") {
+                cout << "Modification cancelled.\n";
+                return;
+            }
+
+            string director, synopsis;
+            int year;
+
+            cout << "Enter the new director: "; 
+            getline(cin, director);
+
+            cout << "Enter the new Synopsis: ";
+            getline(cin, synopsis);
+
+            cout << "Enter the new Year: ";
+            cin >> year;
+
+            node->getInfo().setDirector(director);
+            node->getInfo().setSynopsis(synopsis);
+            node->getInfo().setYear(year);
+
+            cout <<"Movie modified successfully.\n";
+            return;
+        }
+        temp = temp->next;
+    }
+    cout <<"Movie not found.\n";
 }
 
 
