@@ -11,6 +11,7 @@ public:
     void addInOrder(Movie val);
     bool deleteByTitle(std::string title);
     void printList();
+    void printShortList();
 
     MovieNode* getHead();
 };
@@ -72,6 +73,17 @@ void MovieSLL::printList() {
     while (temp != nullptr) {
         temp->getInfo().print();
         std::cout << "------------------\n";
+        temp = temp->getNext();
+    }
+}
+
+void MovieSLL::printShortList() {
+    MovieNode* temp = head;
+    if(temp == nullptr) {
+        cout << "No movie in this genre.\n";
+    }
+    while(temp != nullptr) {
+        temp->getInfo().printShort();
         temp = temp->getNext();
     }
 }

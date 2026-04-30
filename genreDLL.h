@@ -12,6 +12,7 @@ public:
     GenreDLL();
     void addGenre(string name);
     void printGenres();
+    void listMoviesByGenre(const string& name);
     GenreNode* findGenre(string name);
 };
 
@@ -70,6 +71,17 @@ void GenreDLL::printGenres() {
         cout << "- " << temp->name << "\n";
         temp = temp->next;
     }
+}
+
+void GenreDLL::listMoviesByGenre(const std::string& name) {
+    GenreNode* genre = findGenre(name);
+    if(genre == nullptr) {
+        cout << "Genre not found\n";
+        return;
+    }
+
+    cout << "Movies in " << name << '\n';
+    genre->movies.printShortList();
 }
 
 GenreNode* GenreDLL::findGenre(string name) {

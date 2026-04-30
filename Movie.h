@@ -16,6 +16,7 @@ public:
     string getTitle() const;
 
     void print() const;
+    void printShort() const;
 
     bool operator<(const Movie& other) const;
 };
@@ -43,6 +44,10 @@ void Movie::print() const {
     cout << "Director: " << director << endl;
     cout << "Year: " << year << endl;
     cout << "Synopsis: " << synopsis << endl;
+}
+
+void Movie::printShort() const {
+    cout << title << "(" << year << ")" << director << "\n";
 }
 
 bool Movie::operator<(const Movie& other) const {
