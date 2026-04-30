@@ -13,6 +13,7 @@ public:
     void addGenre(string name);
     void printGenres();
     void listMoviesByGenre(const string& name);
+    void searchMovie(const string& title);
     GenreNode* findGenre(string name);
 };
 
@@ -73,7 +74,7 @@ void GenreDLL::printGenres() {
     }
 }
 
-void GenreDLL::listMoviesByGenre(const std::string& name) {
+void GenreDLL::listMoviesByGenre(const string& name) {
     GenreNode* genre = findGenre(name);
     if(genre == nullptr) {
         cout << "Genre not found\n";
@@ -83,6 +84,21 @@ void GenreDLL::listMoviesByGenre(const std::string& name) {
     cout << "Movies in " << name << '\n';
     genre->movies.printShortList();
 }
+
+void GenreDLL::searchMovie(const string& title) {
+    GenreNode* temp = head;
+    while(temp != nullptr) {
+        Movie* movie = temp->movies.findMovieByTitle(title);
+        if(movie != nullptr) {
+            cout << "Movie find in genre " << temp-> name << "\n";
+            movie->print();
+            return;
+        }
+        temp = temp->next;
+    }
+    cout << "Movie not found.\n";
+}
+
 
 GenreNode* GenreDLL::findGenre(string name) {
     GenreNode* temp = head;

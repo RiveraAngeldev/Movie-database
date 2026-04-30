@@ -12,6 +12,7 @@ public:
     bool deleteByTitle(std::string title);
     void printList();
     void printShortList();
+    Movie* findMovieByTitle(const string& title);
 
     MovieNode* getHead();
 };
@@ -86,6 +87,17 @@ void MovieSLL::printShortList() {
         temp->getInfo().printShort();
         temp = temp->getNext();
     }
+}
+
+Movie* MovieSLL::findMovieByTitle(const string& title) {
+    MovieNode* temp = head;
+    while(temp != nullptr) {
+        if(temp->getInfo().getTitle() == title) {
+            return &(temp->getInfo());
+        }
+        temp = temp->getNext();  
+    }
+    return nullptr;
 }
 
 
