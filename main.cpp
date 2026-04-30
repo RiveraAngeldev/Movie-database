@@ -28,52 +28,62 @@ int main()
             cout << "Please enter a genre: " << endl;
             getline(cin,genre);
             dbG.addGenre(genre);
-
             break;
         }
         
         case 2:
         {
+            cout << "Please add the movie: " << endl;
 
-        }
             break;
+        }
+            
 
         case 3:
         {
+            cout << "Please select a movie to modify: " << endl;
 
-        }   
             break;
+        }   
             
         case 4:
         {
-
-        }
+            cout << "Sowing the selected Genere: " << endl;
+                
             break;
+        }
+            
 
         case 5:
         {
+            cout << "Please select the movie to delete: " << endl;
 
-        }
             break;
+        }
+            
 
         case 6:
         {
+            cout << "Showing all movies from the selected genre" << endl;
 
-        }
             break;
+        }
+            
         
         case 7:
         {
+            cout << "Please select the movie to search" << endl;
 
-        }
             break;
+        }
+            
 
         case 8:
         
         {
             cout << "Goodbye!" << endl;
+           
             break;
-
         }
         
         default:
