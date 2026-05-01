@@ -1,6 +1,7 @@
 #include <iostream>
+#include <string>
 #include "genreDLL.h"
-#include "MovieSLL.h"
+#include "Movie.h"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ int main()
 {
     int choice;
     GenreDLL dbG;
-    MovieSLL dbM;
+
 
     cout << "\tWelcome to the MOVIE DATABASE MANAGEMENT SYSTEM!" << endl;
 
@@ -18,7 +19,6 @@ int main()
        
         displayMenu();
         cin >> choice;
-        cin.ignore();
        
         switch (choice)
         {
@@ -26,34 +26,60 @@ int main()
         {
             string genre;
             cout << "Please enter a genre: " << endl;
-            getline(cin,genre);
+            getline(cin, genre);
             dbG.addGenre(genre);
             break;
         }
         
         case 2:
         {
-            cout << "Please add the movie: " << endl;
+            string title, director, sypnopsis, genreName;
+            int year;
+            cout << "Available genres: \n";
+            dbG.printGenres();
 
+            cout << "Select genre: ";
+            getline(cin, genreName);
+            GenreNode* genre = dbG.findGenre(genreName);
+
+            if(genre == nullptr) {
+                cout << "Genre not found.\n";
+                break;
+            }
+            cout << "Enter title: ";
+            getline(cin, title);
+
+            cout << "Enter director: ";
+            getline(cin, director);
+
+            cout << "Enter sypnopsis: ";
+            getline(cin, sypnopsis);
+
+            cout << "Emter year: ";
+            cin >> year;
+
+            Movie movie(title, director, sypnopsis, year);
+            genre->movies.addInOrder(movie);
+
+            cout << "Movie added successfully!\n";
             break;
         }
             
-
         case 3:
         {
-            cout << "Please select a movie to modify: " << endl;
-
+            string title;
+            cout << "Please select a movie to modify: ";
+            getline(cin, title);
+            dbG.modifyMovie(title);
             break;
         }   
             
         case 4:
         {
-            cout << "Sowing the selected Genere: " << endl;
-                
+            dbG.printGenres(); 
             break;
         }
             
-
         case 5:
         {
             cout << "Please select the movie to delete: " << endl;
@@ -61,15 +87,15 @@ int main()
             break;
         }
             
-
         case 6:
         {
-            cout << "Showing all movies from the selected genre" << endl;
-
+            string genreName;
+            cout << "Enter genre: ";
+            getline(cin, genreName);
+            dbG.listMoviesByGenre(genreName);
             break;
         }
             
-        
         case 7:
         {
             cout << "Please select the movie to search" << endl;
@@ -77,7 +103,6 @@ int main()
             break;
         }
             
-
         case 8:
         
         {
