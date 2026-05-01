@@ -1,3 +1,6 @@
+#ifndef MOVIENODE_H
+#define MOVIENODE_H
+
 #include "Movie.h"
 
 class MovieNode {
@@ -40,3 +43,5 @@ void MovieNode::setInfo(Movie val) {
 void MovieNode::setNext(MovieNode* n) {
     next = n;
 }
+
+#endif

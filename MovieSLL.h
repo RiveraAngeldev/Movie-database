@@ -1,3 +1,6 @@
+#ifndef MOVIESLL_H
+#define MOVIESLL_H
+
 #include <iostream>
 #include "MovieNode.h"
 
@@ -104,3 +107,5 @@ MovieNode* MovieSLL::findMovieByTitle(const std::string& title) {
 MovieNode* MovieSLL::getHead() {
     return head;
 }
+
+#endif

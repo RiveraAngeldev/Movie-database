@@ -1,3 +1,6 @@
+#ifndef MOVIE_H
+#define MOVIE_H
+
 #include <string>
 #include <iostream>
 using namespace std;
@@ -71,3 +74,5 @@ void Movie::printShort() const {
 bool Movie::operator<(const Movie& other) const {
     return this->title < other.title;
 }
+
+#endif

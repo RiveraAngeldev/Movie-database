@@ -1,3 +1,6 @@
+#ifndef GENRENODE_H
+#define GENRENODE_H
+
 #include <string>
 #include "MovieSLL.h"
 #include "Movie.h"
@@ -17,3 +20,5 @@ GenreNode::GenreNode(std::string n) {
     name = n;
     next = prev = nullptr;
 }
+
+#endif

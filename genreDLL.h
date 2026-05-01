@@ -1,3 +1,6 @@
+#ifndef GENREDLL_H
+#define GENREDLL_H
+
 #include <iostream>
 #include <string>
 #include "GenreNode.h"
@@ -153,3 +156,5 @@ GenreNode* GenreDLL::findGenre(string name) {
 
     return nullptr;
 }
+
+#endif
