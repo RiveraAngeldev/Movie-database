@@ -110,6 +110,8 @@ int main()
         case 6:
         {
             string genreName;
+            cout << "Showing available genres: " << endl;
+            dbG.printGenres();
             cout << "Enter the genre: ";
             getline(cin, genreName);
             cout << "Showing all the movies from the selected genre: " << endl;
