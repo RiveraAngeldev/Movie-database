@@ -31,7 +31,7 @@ void GenreDLL::addGenre(string name) {
     // Case 1: empty list
     if (head == nullptr) {
         head = newNode;
-        cout << "Genre added successfully!\n";
+        cout << "\nGenre added successfully!\n";
         return;
     }
 
@@ -40,7 +40,7 @@ void GenreDLL::addGenre(string name) {
         newNode->next = head;
         head->prev = newNode;
         head = newNode;
-        cout << "Genre added successfully!\n";
+        cout << "\nGenre added successfully!\n";
         return;
     }
 
@@ -61,7 +61,7 @@ void GenreDLL::addGenre(string name) {
 
     temp->next = newNode;
 
-    cout << "Genre added successfully!\n";
+    cout << "\nGenre added successfully!\n";
 }
 
 void GenreDLL::printGenres() {
@@ -94,8 +94,9 @@ void GenreDLL::searchMovie(const string& title) {
     while(temp != nullptr) {
         MovieNode* node = temp->movies.findMovieByTitle(title);
         if (node != nullptr) {
-            cout << "Movie found in genre " << temp->name << "\n";
+            cout << "\nMovie found in genre " << temp->name << "\n";
             node->getInfo().print();
+            return;
         }
         temp = temp->next;
     }
