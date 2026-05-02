@@ -12,7 +12,7 @@ public:
     MovieNode();
     MovieNode(Movie val);
 
-    Movie getInfo();
+    Movie& getInfo();
     MovieNode* getNext();
 
     void setInfo(Movie val);
@@ -28,7 +28,7 @@ MovieNode::MovieNode(Movie val) {
     next = nullptr;
 }
 
-Movie MovieNode::getInfo() {
+Movie& MovieNode::getInfo() {
     return info;
 }
 

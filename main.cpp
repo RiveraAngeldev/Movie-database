@@ -47,6 +47,9 @@ int main()
                 cout << "Genre not found.\n";
                 break;
             }
+
+            cout << "\tMovie Details " << endl;
+
             cout << "Enter title: ";
             getline(cin, title);
 
@@ -59,10 +62,35 @@ int main()
             cout << "Enter year: ";
             cin >> year;
 
+            cin.ignore(1000, '\n');
+
             Movie movie(title, director, sypnopsis, year);
-            genre->movies.addInOrder(movie);
+            
 
             cout << "Movie added successfully!\n";
+
+            char addMore;
+            do
+            {
+                string actor, role;
+                cout <<"\nEnter Actors name: \n";
+                getline(cin,actor);
+                cout << "\nEnter Role: \n";
+                getline(cin,role);
+
+                movie.addCastMember(actor,role);
+
+                cout << "Add another actor? (Y/N)" << endl;
+                cin >> addMore;
+
+                cin.ignore(1000, '\n');
+
+            } while (addMore == 'y' || addMore == 'Y');
+
+            genre->movies.addInOrder(movie);
+
+                cout << "\nMovie and Cast addes succesfully!" << endl;
+
             break;
         }
             
@@ -85,6 +113,8 @@ int main()
         case 5:
         {
             string genreName, title;
+            cout << "Showing available genres: " << endl;
+            dbG.printGenres();
             cout << "Please select the genre of the movie you want to delete: " << endl;
             getline(cin,genreName);
 

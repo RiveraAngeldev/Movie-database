@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include "CastSLL.h"
 using namespace std;
 
 class Movie {
@@ -11,17 +12,22 @@ private:
     string director;
     string synopsis;
     int year;
+    CastSLL castList;
 
 public:
     Movie();
     Movie(string t, string d, string s, int y);
+
     string getTitle() const;
+    
     void setTitle( string t);
     void setDirector( string d);
     void setSynopsis( string s);
     void setYear(int y);
+
     void print() const;
     void printShort() const;
+    void addCastMember(string name, string role);
 
     bool operator<(const Movie& other) const;
 };
@@ -65,14 +71,21 @@ void Movie::print() const {
     cout << "Director: " << director << endl;
     cout << "Year: " << year << endl;
     cout << "Synopsis: " << synopsis << endl;
+    cout << "Cast & Crew: " << endl;
+    castList.printCast();
 }
 
 void Movie::printShort() const {
-    cout << title << "(" << year << ")" << director << "\n";
+    cout << title << "(" << year << ") - Dir: " << director << "\n";
 }
 
 bool Movie::operator<(const Movie& other) const {
     return this->title < other.title;
+}
+
+void Movie::addCastMember(string name, string role)
+{
+    castList.addActor(name,role);
 }
 
 #endif
