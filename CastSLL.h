@@ -7,7 +7,7 @@ using namespace std;
 class CastSLL
 {
 private:
-    Cast* head;
+    CastNode* head;
 
 public:
     CastSLL();
@@ -25,7 +25,7 @@ CastSLL::CastSLL()
 
 void CastSLL::addActor(string name, string role)
 {
-    Cast* newNode = new Cast(name,role);
+    CastNode* newNode = new CastNode(name,role);
 
     if (head == nullptr)
     {
@@ -33,7 +33,7 @@ void CastSLL::addActor(string name, string role)
         return;
     }
 
-    Cast* temp = head;
+    CastNode* temp = head;
     
     while(temp->getNext() != nullptr)
     {
@@ -52,7 +52,7 @@ void CastSLL::printCast() const
         return;
     }
 
-    Cast* temp = head;
+    CastNode* temp = head;
     
     while (temp != nullptr)
     {

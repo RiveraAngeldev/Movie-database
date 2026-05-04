@@ -6,52 +6,52 @@
 #include <iostream>
 
 
-class Cast 
+class CastNode 
 {
 private:
 
     std::string actorName;
     std::string role;
-    Cast* next;
+    CastNode* next;
 
 public:
-    Cast(std::string name, std::string r);      //constructor
+    CastNode(std::string name, std::string r);      //constructor
 
     //Getters
     std:: string getActorName();
     std::string getRole();
-    Cast* getNext();
+    CastNode* getNext();
 
     //Setters
-     void setNext(Cast* n);
+     void setNext(CastNode* n);
 
 };
 
 //Implementation
 
-Cast::Cast(std::string name, std::string r)
+CastNode::CastNode(std::string name, std::string r)
 {
     actorName = name;
     role = r;
     next = nullptr;
 }
 
-std::string Cast::getActorName()
+std::string CastNode::getActorName()
 {
     return actorName;
 }
 
-std::string Cast::getRole()
+std::string CastNode::getRole()
 {
     return role;
 }
 
-Cast* Cast::getNext()
+CastNode* CastNode::getNext()
 {
     return next;
 }
 
-void Cast::setNext(Cast* n)
+void CastNode::setNext(CastNode* n)
 {
     next = n;
 }
