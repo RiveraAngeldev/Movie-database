@@ -10,6 +10,7 @@ using namespace std;
 class GenreDLL {
 private:
     GenreNode* head;
+    GenreNode* tail;
 
 public:
     GenreDLL();
@@ -23,6 +24,7 @@ public:
 
 GenreDLL::GenreDLL() {
     head = nullptr;
+    tail = nullptr;
 }
 
 void GenreDLL::addGenre(string name) {
@@ -31,6 +33,7 @@ void GenreDLL::addGenre(string name) {
     // Case 1: empty list
     if (head == nullptr) {
         head = newNode;
+        tail = newNode;
         cout << "\nGenre added successfully!\n";
         return;
     }
@@ -60,6 +63,11 @@ void GenreDLL::addGenre(string name) {
     }
 
     temp->next = newNode;
+
+    if (newNode->next ==nullptr)
+    {
+        tail = newNode;
+    }
 
     cout << "\nGenre added successfully!\n";
 }
